@@ -22,6 +22,10 @@ OUTPUT_PATH = Path("/output/entry.txt")
 
 
 def main() -> None:
+    if not 1 <= len(ENTRY) <= 280 or not ENTRY.strip():
+        raise ValueError(
+            f"ENTRY must be 1-280 non-blank characters, got {len(ENTRY)}"
+        )
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(ENTRY, encoding="utf-8")
 
